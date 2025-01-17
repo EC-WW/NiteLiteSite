@@ -10,15 +10,22 @@
             text-align: center;
             margin-top: 100px;
         }
-        button {
+        button, .download-button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Page</h1>
-    <button onclick="alert('Button clicked!')">Click Me</button>
+    <h1>Get started with NiteLite</h1>
+    <p>Download page for the NiteLite Engine</p>
+    <p>Click the button below to download the engine</p>
+    <a href="https://github.com/EC-WW/NiteLiteSite/releases/latest/NiteLaunch_Setup.exe" class="download-button" download>Download NiteLite Engine</a>
 </body>
 </html>
