@@ -1,4 +1,11 @@
-call ..\..\CreateInstaller.bat
+SET curpath=%~dp0
+
+cd ..
+cd ..
+
+call CreateInstaller.bat
+
+cd %curpath%
 
 ::Get version number from the most recent release, if there is none, start at 0.0.0
 powershell -Command "Invoke-WebRequest https://github.com/EC-WW/NiteLiteSite/releases/latest/download/VERSION.txt -OutFile VERSION.txt"
@@ -17,10 +24,12 @@ echo v%new_version% > VERSION.txt
 ::create the release on github
 gh release create %new_version% --notes %new_version%
 
+xcopy ..\..\Installer\INSTALLER\NiteLite_Setup.exe .\ /Y
+
 ::add the zip to the release
 gh release upload %new_version% VERSION.txt
-gh release upload %new_version% ..\..\Installer\INSTALLER\NiteLite_Setup.exe
+gh release upload %new_version% NiteLite_Setup.exe
 
 ::delete the uploaded stuffs
 del VERSION.txt
-del NiteLite.zip
+del NiteLite_Setup.exe
